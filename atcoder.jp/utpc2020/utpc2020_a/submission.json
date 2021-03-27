@@ -1,0 +1,12 @@
+{
+	"id": 21280461,
+	"epoch_second": 1616825341,
+	"problem_id": "utpc2020_a",
+	"contest_id": "utpc2020",
+	"user_id": "in708",
+	"language": "PyPy3 (7.3.0)",
+	"point": 100,
+	"length": 1373,
+	"result": "AC",
+	"execution_time": 194
+}
