@@ -2,8 +2,9 @@
 
 ## 概要
 
+[![Badge](https://cp-logo.vercel.app/atcoder/in708?logo=true)](https://atcoder.jp/users/in708)
+
 AtCoderで自分がACした問題のコードをまとめています。  
-AtCoderのユーザ名： [in708](https://atcoder.jp/users/in708)
 
 2021/06/26：目標だった茶色へランクが上がった。次は、茶色から落とさずに緑になれるように精進する。
 
