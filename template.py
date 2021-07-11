@@ -1,34 +1,118 @@
 # -*- coding: utf-8 -*-
 
 '''
-文字列取得用関数(str,int併用)
+Function to get a string.
+--
+is_str:bool -> {
+    True: input data is 'str'.
+    False: input data is not 'str'.
+    *This function can determine the type automatically.
+}
+split:bool ->{
+    True: Split the input data.
+    False: Does not split the input data.
+    *This function can automatically determine the split.
+}
+is_list:bool ->{
+    True: Get input data in a list.
+    False: Does not get input data in a list
+}
+loop_times:int ->{
+    Used when input data is to be retrieved multiple times.
+}
+
 '''
-def inputter(is_str=False,split=False):
+def inputter(is_str=False, split=False, is_list=False, loop_times=0):
     import sys
     readline = sys.stdin.readline
-    
-    if is_str:
-        if split:
-            return map(str, readline().rstrip().split())
+
+    return_data_list = []
+    loop_cnt = loop_times
+
+    # Adjusting for processing
+    if loop_times == 0:
+        loop_cnt = 1
+
+    for _ in range(loop_cnt):
+        # Get input data
+        data = readline().rstrip()
+        data_split = data.split()
+
+        # Determine if input data can be split
+        if not(split) and len(data_split) > 1:
+            split = True
+
+        # Determine the type of input data
+        if not(is_str):
+            try:
+                int(data_split[0])
+            except:
+                is_str = True
+
+        # Process according to input data
+        if is_str:
+            if split:
+                if is_list:
+                    return_data = list(list(map(str, data_split)))
+                else:
+                    return_data = map(str, data_split)
+            else:
+                if is_list:
+                    return_data = list(data)
+                else:
+                    return_data = data
         else:
-            return readline().rstrip()
+            if split:
+                if is_list:
+                    return_data = list(list(map(int, data_split)))
+                else:
+                    return_data = map(int, data_split)
+            else:
+                if is_list:
+                    return_data = list(list(int(data)))
+                else:
+                    return_data = int(data)
+
+        # Only when input data is to be acquired multiple times
+        if loop_times != 0:
+            return_data_list.append(return_data)
+
+    # Return the result
+    if loop_times == 0:
+        return return_data
     else:
-        if split:
-            return map(int, readline().rstrip().split())
-        else:
-            return int(readline().rstrip())
+        return return_data_list
 
-'''
-二重リストを返す関数
-'''
-def double_list(input_data):
-    return list(list(input_data))
-
-
-# main関数
+# (function) main
 def main():
+    ''' input data is 'int' '''
+    # Single input data
     n = inputter()
-    print(n)
+
+    # Multiple input data
+    n, m = inputter()
+    n = inputter(is_list=True)
+
+    # Acquire input data multiple times
+    n = inputter(is_list=True, loop_times=m)
+
+    # Takes 'int' as an 'str'
+    n = inputter(is_str=True)
+
+    ''' input data is 'str' '''
+    # Single input data
+    s = inputter()
+    s = inputter(is_list=True)
+    s = inputter(is_list=True, split=True)
+
+    # Multiple input data
+    s, t = inputter()
+    s = inputter(is_list=True)
+    s = inputter(is_list=True)
+
+    # Acquire input data multiple times
+    s = inputter(is_list=True, loop_times=m)
+
 
 if __name__ == '__main__':
     main()
