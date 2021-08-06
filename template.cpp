@@ -27,12 +27,12 @@
 #define outn(s) cout << s << endl;
 using namespace std;
 using ll = long long;
+using str = string;
+using dbl = double;
 using P = pair<int, int>;
 using vi = vector<int>;
 using vll = vector<ll>;
 using vd = vector<dbl>;
-using str = string;
-using dbl = double;
 
 int main() {
 	int n;
